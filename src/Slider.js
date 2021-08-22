@@ -1,15 +1,20 @@
 import { React, useState } from "react";
 import "./carousel.scss";
-import Images from "./components/Images";
+import classes from './style/Images.module.css'
+import austria from './img/austria.jpeg'
+import colombia from './img/colombia.jpeg'
+import italy from './img/italy.jpeg'
+import mountain from './img/mountain.jpeg'
+import sunrise from './img/sunrise.jpeg'
 
 function Carousel() {
   
   const DATA = [
-    { id:1,src: "'./img/austria.jpeg'", title: "austria" },
-    { id:2,src: "./img/colombia.jpeg", title: "colombia" },
-    { id:3,src: "./img/italy.jpeg", title: "italy" },
-    { id:4,src: "./img/mountain.jpeg", title: "mountain" },
-    { id:5,src: "./img/sunrise.jpeg", title: "sunrise" },
+    { id:1,src: austria, title: "austria" },
+    { id:2,src: colombia, title: "colombia" },
+    { id:3,src:italy, title: "italy" },
+    { id:4,src:mountain, title: "mountain" },
+    { id:5,src: sunrise, title: "sunrise" },
   ];
   let carArr = DATA.length;
   const [x, setX] = useState(0);
@@ -31,7 +36,7 @@ function Carousel() {
             className="carousel__item"
             style={{ transform: `translateX(${x}%)` }}
           >
-            <Images src={item}/>
+            <img src={item.src} className={classes.image} alt={item.title}/>
           </div>
         );
       })}
@@ -41,7 +46,10 @@ function Carousel() {
       <button className="carousel__buttons" id="right" onClick={goRight}>
         right
       </button>
+      <h2>Deneeme</h2>
+     
     </div>
+    
   );
 }
 
