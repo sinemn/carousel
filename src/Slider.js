@@ -1,21 +1,15 @@
 import { React, useState } from "react";
 import "./carousel.scss";
 import { ArrowBack, ArrowForward } from "@material-ui/icons";
-
 import classes from "./style/Images.module.css";
-import austria from "./img/austria.jpeg";
-import colombia from "./img/colombia.jpeg";
-import italy from "./img/italy.jpeg";
-import mountain from "./img/mountain.jpeg";
-import sunrise from "./img/sunrise.jpeg";
 
 function Carousel() {
   const DATA = [
-    { id: 1, src: austria, title: "austria" },
-    { id: 2, src: colombia, title: "colombia" },
-    { id: 3, src: italy, title: "italy" },
-    { id: 4, src: mountain, title: "mountain" },
-    { id: 5, src: sunrise, title: "sunrise" },
+    { id: 1, src: "./img/austria.jpeg", title: "austria" },
+    { id: 2, src: "./img/colombia.jpeg", title: "colombia" },
+    { id: 3, src: "./img/italy.jpeg", title: "italy" },
+    { id: 4, src: "./img/mountain.jpeg", title: "mountain" },
+    { id: 5, src: "./img/sunrise.jpeg", title: "sunrise" },
   ];
   let carArr = DATA.length;
   const [x, setX] = useState(0);
@@ -35,7 +29,11 @@ function Carousel() {
             className="carousel__item"
             style={{ transform: `translateX(${x}%)` }}
           >
-            <img src={item.src} className={classes.image} alt={item.title} />
+            <img
+              src={process.env.PUBLIC_URL + item.src}
+              className={classes.image}
+              alt={item.title}
+            />
           </div>
         );
       })}
